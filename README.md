@@ -1,2 +1,5 @@
 # patterns
-Object-Oriented Design Patterns
+
+##Object-Oriented Design Patterns
+
+A collection of diagrams + examples, written on Typescript.
