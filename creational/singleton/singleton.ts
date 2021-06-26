@@ -5,12 +5,11 @@ class Singleton {
     // Конструктор должен быть всегда  приватным и предотвращать прямой вызов оператором new
     private constructor() {}
 
-    // Статичный метод который позволяет доступ к экземпляру Singleton'а
+    // Статичный метод, который позволяет доступ к экземпляру Singleton'а
     public static getInstance(): Singleton {
         if (!Singleton.instance) {
             Singleton.instance = new Singleton();
         }
-
         return Singleton.instance;
     }
 
@@ -24,7 +23,7 @@ function testIt() {
     const singleton2 = Singleton.getInstance();
 
     if (singleton1 === singleton2) {
-        console.log('Обе переменные содердат один и тот же экземпляр');
+        console.log('Обе переменные содержат один и тот же экземпляр');
     } else {
         console.log('Провал синглтона');
     }
