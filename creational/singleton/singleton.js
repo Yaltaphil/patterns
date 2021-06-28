@@ -5,16 +5,15 @@ var Singleton = /** @class */ (function () {
     }
     // Статичный метод, который позволяет доступ к экземпляру Singleton'а
     Singleton.getInstance = function () {
-        if (!Singleton.instance) {
-            Singleton.instance = new Singleton();
+        if (!Singleton._instance) {
+            Singleton._instance = new Singleton();
         }
-        return Singleton.instance;
+        return Singleton._instance;
     };
     //Бизнес логика синглтона
     Singleton.prototype.singletonsLogic = function () { };
     return Singleton;
 }());
-// test
 function testIt() {
     var singleton1 = Singleton.getInstance();
     var singleton2 = Singleton.getInstance();
