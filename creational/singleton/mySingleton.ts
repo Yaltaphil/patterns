@@ -1,15 +1,15 @@
 class Database {
-    private static _mongoDB: Database;
+    private static _connection: Database;
 
     private constructor(url: string) {
         console.log(`Подключились к базе - ${url}. `)
     }
 
     public static connectToDatabase(): Database {
-        if (!Database._mongoDB) {
-            Database._mongoDB = new Database('MongoDB');
+        if (!Database._connection) {
+            Database._connection = new Database('MongoDB');
         }
-        return Database._mongoDB;
+        return Database._connection;
     }
 
     public useDatabase(operation: string) {
