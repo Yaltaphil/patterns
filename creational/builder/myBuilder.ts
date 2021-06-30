@@ -121,13 +121,18 @@ function client(director: Director) {
     director.serveCappuchino();
     builder1.getProduct().listParts();
 
+    console.log('\x1b[41m', 'Wrong Tea:', '\x1b[0m');
+    director.serveTea();
+    builder1.getProduct().listParts();
+    console.log('Changing barista ...','\n');
+
     director.setBuilder(builder2);
 
     console.log('Tea:');
     director.serveTea();
     builder2.getProduct().listParts();
 
-    console.log('Fired director - make Latte');
+    console.log('Fired director - let\'s make Latte');
     builder1.addCoffee();
     builder1.addMilk();
     builder1.addMilk();
