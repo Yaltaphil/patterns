@@ -32,8 +32,9 @@ class Rectangle extends Shape {
     }
     clone(): Rectangle {
         // deep 
-        const clone = _.cloneDeep(this);
-        // const clone = v8.deserialize(v8.serialize(this)); -  не присваивает литералу объекта класс Rectangle
+        // const clone = _.cloneDeep(this);
+        const clone = v8.deserialize(v8.serialize(this));
+        clone.__proto__ = this;
 
         // shallow:
         // const clone = { ...this };
@@ -68,6 +69,8 @@ function client() {
         Object.getOwnPropertyNames(r1),
         Object.getOwnPropertyNames(r2)
     );
+
+    r2.someMethod();
 }
 
 client();
