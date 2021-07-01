@@ -132,7 +132,7 @@ function client(director: Director) {
     director.serveTea();
     builder2.getProduct().listParts();
 
-    console.log('Fired director - let\'s make Latte');
+    console.log('No director - let\'s make Latte');
     builder1.addCoffee();
     builder1.addMilk();
     builder1.addMilk();

@@ -1,0 +1,21 @@
+{
+  "devDependencies": {
+    "@types/lodash.clonedeep": "^4.5.6",
+    "@types/node": "^15.12.5"
+  },
+  "name": "prototype",
+  "version": "1.0.0",
+  "main": "prototype.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "lodash.clonedeep": "^4.5.0",
+    "require": "^2.4.20",
+    "v8": "^0.1.0"
+  }
+}
