@@ -1,76 +1,51 @@
-import * as _ from 'lodash';
-import * as v8 from 'v8';
+interface Proto {
+    clone(): Proto;
+}
 
-
-class Shape {
-    x: number;
-    y: number;
-    constructor(x: number = 5, y: number = 5) {
-        (this.x = x), (this.y = y);
+class Point implements Proto {
+    public x: number;
+    public y: number;
+    constructor(x: number, y: number) {
+        this.x = x;
+        this.y = y;
     }
-    public clone(): Shape {
-        const clone = _.cloneDeep(this);
-
-        // const clone = { ...this };
-        // const clone = Object.create(this) ;
-        // const clone = JSON.parse(JSON.stringify(this));
-
-        return clone;
+    public clone(): Point {
+        return new Point(this.x, this.y);
     }
 }
 
-class Rectangle extends Shape {
-    width: number;
-    height: number;
-    constructor(width: number = 20, height: number = 10) {
-        super();
-        this.width = width;
-        this.height = height;
+class ColorPoint extends Point {
+    public color: string;
+    constructor(x: number, y: number, c: string) {
+        super(x, y);
+        this.color = c;
     }
-    someMethod() {
-        console.log('method works!');
-    }
-    clone(): Rectangle {
-        // deep 
-        // const clone = _.cloneDeep(this);
-        const clone = v8.deserialize(v8.serialize(this));
-        clone.__proto__ = this;
-
-        // shallow:
-        // const clone = { ...this };
-        // const clone = Object.create(this);
-        // const clone = JSON.parse(JSON.stringify(this));
-
-        return clone;
+    public clone(): ColorPoint {
+        return new ColorPoint(this.x, this.y, this.color);
     }
 }
 
-function client() {
-    const s1 = new Shape();
-    const s2 = s1.clone();
-    if (s1 !== s2) {
-        console.log('Shapes are different!', s1, s2);
-    }
-    console.log(
-        s1 instanceof Shape,
-        s2 instanceof Shape,
-        Object.getOwnPropertyNames(s1),
-        Object.getOwnPropertyNames(s2)
-    );
+//test
+const p1 = new Point(10, 20);
+const p2 = p1.clone();
+p2.x = 100;
+console.log(p1, p2);
+console.log(p1 instanceof Point, p2 instanceof Point);
 
-    const r1 = new Rectangle();
-    const r2 = r1.clone();
-    if (r1 !== r2) {
-        console.log('Rectangles are different!', r1, r2);
-    }
-    console.log(
-        r1 instanceof Rectangle,
-        r2 instanceof Rectangle,
-        Object.getOwnPropertyNames(r1),
-        Object.getOwnPropertyNames(r2)
-    );
+const c1 = new ColorPoint(10, 20, 'red');
+const c2 = c1.clone();
+c2.color = 'green';
+const c3 = c2.clone();
+console.log(c1, c2, c3);
+console.log(
+    c1 instanceof ColorPoint,
+    c2 instanceof ColorPoint,
+    c2 instanceof ColorPoint
+);
 
-    r2.someMethod();
-}
-
-client();
+/* output
+Point { x: 10, y: 20 } Point { x: 100, y: 20 }
+true true
+ColorPoint { x: 10, y: 20, color: 'red' } ColorPoint { x: 10, y: 20, color: 'green' } ColorPoint { x: 10, y: 20, color: 'green' }
+true true true
+*/
