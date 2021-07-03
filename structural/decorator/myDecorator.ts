@@ -1,16 +1,13 @@
 // структурный паттерн проектирования, который позволяет динамически добавлять
 // объектам новую функциональность, оборачивая их
-
 interface Pizzeria {
     getDescription(): string;
 }
-
 class Pizza implements Pizzeria {
     getDescription(): string {
         return `Pizza!`;
     }
 }
-
 class Decorator implements Pizzeria {
     protected pizza: Pizza;
     constructor(pizza: Pizza) {
@@ -20,13 +17,11 @@ class Decorator implements Pizzeria {
         return this.pizza.getDescription();
     }
 }
-
 class Pepperoni extends Decorator {
     public getDescription(): string {
         return `${super.getDescription()} + pepper`;
     }
 }
-
 class SeaPizza extends Decorator {
     public getDescription(): string {
         return `${super.getDescription()} + shrimps`;
