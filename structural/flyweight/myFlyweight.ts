@@ -24,7 +24,7 @@ class Tree {
         this.y = y;
         this.type = type;
     }
-    public info() {
+    public info(): void {
         this.type.info(this.x, this.y);
     }
 }
@@ -48,16 +48,16 @@ class TreeFactory {
 
 class Forest {
     trees: Tree[] = [];
-    plantTree(x: number, y: number, name: string) {
+    plantTree(x: number, y: number, name: string): void {
         let type = TreeFactory.getTreeType(name);
         let tree = new Tree(x, y, type);
         // tree.info();
         this.trees.push(tree);
     }
-    showTrees() {
+    showTrees(): void {
         this.trees.forEach((element) => console.log(element));
     }
-    showTreesQantity() {
+    showTreesQantity(): void {
         console.log(`Trees generated: ${this.trees.length}`);
     }
 }
