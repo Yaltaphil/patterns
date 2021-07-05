@@ -32,7 +32,7 @@ class Branch extends TreePart {
         for (const child of this.children) {
             results.push(child.grow());
         }
-        return `ᛘ(${results.join('')})`;
+        return `ᛘ(${results.join('-')})`;
     }
 }
 
@@ -62,4 +62,7 @@ function client2(part1: TreePart, part2: TreePart) {
     console.log(part1.grow());
 }
 client2(tree, branch2);
-
+/* output
+ᛘ(ᛘ(🍁-🍁-🍁)-ᛘ(ᛘ(🍁-🍁)-🍁-🍁))
+ᛘ(ᛘ(🍁-🍁-🍁)-ᛘ(ᛘ(🍁-🍁)-🍁-🍁)-ᛘ(ᛘ(🍁-🍁)-🍁-🍁))
+*/
