@@ -7,11 +7,8 @@ abstract class TreePart {
     public setParent(parent: TreePart) {
         this.parent = parent;
     }
-    public getParent(): TreePart {
-        return this.parent;
-    }
     public add(part: TreePart): void {}
-    public isComposite(): boolean {
+    public isBranch(): boolean {
         return false;
     }
     public abstract grow(): string;
@@ -27,14 +24,7 @@ class Branch extends TreePart {
         this.children.push(part);
         part.setParent(this);
     }
-
-    public remove(part: TreePart): void {
-        const partIndex = this.children.indexOf(part);
-        this.children.splice(partIndex, 1);
-
-        part.setParent(null);
-    }
-    public isComposite(): boolean {
+    public isBranch(): boolean {
         return true;
     }
     public grow(): string {
@@ -42,8 +32,7 @@ class Branch extends TreePart {
         for (const child of this.children) {
             results.push(child.grow());
         }
-
-        return `ᛘ(${results.join('+')})`;
+        return `ᛘ(${results.join('')})`;
     }
 }
 
@@ -67,10 +56,10 @@ tree.add(branch1);
 tree.add(branch2);
 client(tree);
 function client2(part1: TreePart, part2: TreePart) {
-    if (part1.isComposite()) {
+    if (part1.isBranch()) {
         part1.add(part2);
     }
     console.log(part1.grow());
 }
 client2(tree, branch2);
-console.log(tree)
+
