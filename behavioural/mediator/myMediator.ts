@@ -1,5 +1,4 @@
 /**поведенческий паттерн проектирования, который позволяет уменьшить связанность множества классов между собой, благодаря перемещению этих связей в один класс-посредник */
-
 interface IMediator {
     notify(sender: object, event: string): void;
 }
@@ -32,7 +31,6 @@ class Button extends Component {
         console.log('Button clicked');
         this.mediator.notify(this, 'click');
     }
-
     public changeColor(): void {
         console.log('Button color changed');
         this.mediator.notify(this, 'colorChanged');
@@ -43,7 +41,6 @@ class Checkbox extends Component {
         console.log('Checkbox checked');
         this.mediator.notify(this, 'checked');
     }
-
     public hover(): void {
         console.log('Color changed');
         this.mediator.notify(this, 'hover');
