@@ -1,7 +1,7 @@
 // поведенческий паттерн проектирования, который позволяет объектам менять поведение в зависимости от своего состояния
 
-class Door {  
-     constructor(private state: State) {
+class Door {
+    constructor(private state: State) {
         this.openClose(state);
     }
     public openClose(state: State): void {
@@ -15,7 +15,7 @@ class Door {
 
 abstract class State {
     protected door: Door;
-    public setDoor(door: Door) {
+    public setDoor(door: Door): void {
         this.door = door;
     }
     public abstract enter(): void;
@@ -28,9 +28,9 @@ class OpenedDoor extends State {
 }
 
 class ClosedDoor extends State {
-     public enter(): void {
+    public enter(): void {
         console.log('Дверь закрыта: открываем дверь');
-         this.door.openClose(new OpenedDoor());         
+        this.door.openClose(new OpenedDoor());
     }
 }
 
