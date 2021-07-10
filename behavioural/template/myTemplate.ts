@@ -2,11 +2,11 @@
 
 abstract class Company {
     public templateMethod(): void {
-        this.cheef();
+        this.boss();
         this.staff();
         this.frelancer();
     }
-    protected cheef(): void {
+    protected boss(): void {
         console.log('Сеньор: я делаю основную часть работы');
     }
     protected abstract staff(): void;
