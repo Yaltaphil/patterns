@@ -7,7 +7,7 @@ interface IIterator {
 }
 class ForwardIterator implements IIterator {
     private position: number = 0;
-    constructor(private collection: Words, private reverse: boolean = false) {}
+    constructor(private collection: Words) {}
     public toStart(): void {
         this.position = 0;
     }
